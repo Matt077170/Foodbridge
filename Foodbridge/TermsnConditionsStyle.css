@@ -1,0 +1,660 @@
+/* Custom Properties (for easier color management) */
+:root {
+    /* Colors derived from the image */
+    --color-primary-green: #2e7d32; /* Dark green for logo/accents */
+    --color-accent-orange: #ff9800; /* Main accent orange (buttons, borders) */
+    --color-light-peach-bg: #ffe0b2; /* Lighter peach for the form card background */
+    --color-dark-peach-text: #a14e0f; /* Darker orange for form labels and titles */
+    --color-hero-bg: #fce4ec; /* Background of hero section (soft pink) */
+    --color-gray-text: #666; /* General body text color */
+    --color-dark-gray-footer: #4a4a4a; /* Footer background */
+    --color-white: #ffffff;
+    --color-black: #333; /* Headings, main text */
+    --color-light-bg: #f7f7f7; /* General page background */
+    --color-input-border: #a14e0f; /* Border color for inputs */
+    --color-input-placeholder: #b0b0b0; /* Placeholder text color */
+
+    /* Modal specific colors */
+    --color-modal-bg: #fefefe; /* Background of the modal content */
+    --color-modal-border: #888;
+    --color-modal-overlay: rgba(0,0,0,0.4); /* Overlay for the background */
+    --color-modal-text: #555; /* Text color inside modal */
+    --color-modal-header-bg: #e0e0e0; /* Header for terms */
+
+
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Basic Resets & Global Styles (consistent with previous pages) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-black);
+    background-color: var(--color-light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: background-color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+/* Header (navbar) - Reused */
+.navbar {
+    background-color: var(--color-white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--color-primary-green);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary-green);
+    text-decoration: none;
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav ul li a {
+    color: var(--color-gray-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95em;
+}
+
+.navbar nav ul li a:hover {
+    color: var(--color-primary-green);
+}
+
+.account-btn {
+    background-color: var(--color-accent-orange);
+    color: var(--color-white);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.95em;
+}
+
+.account-btn:hover {
+    background-color: #e68900;
+}
+
+/* Admin Sign-up Section */
+.admin-signup-section {
+    background-color: var(--color-hero-bg);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-signup-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-text {
+    text-align: left;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.intro-text h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.intro-text p {
+    font-size: 1.1em;
+    color: var(--color-gray-text);
+    line-height: 1.7;
+}
+
+.signup-card {
+    background-color: var(--color-light-peach-bg);
+    padding: 50px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px; /* Adjusted max-width for 2 columns */
+    position: relative;
+    z-index: 3;
+}
+
+.signup-card h2 {
+    color: var(--color-primary-green);
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.signup-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 250px; /* Minimum width for responsiveness */
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-dark-peach-text);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-input-border);
+    border-radius: 5px;
+    background-color: var(--color-white);
+    font-size: 1em;
+    color: var(--color-black);
+    font-family: var(--font-body);
+}
+
+.form-group input::placeholder,
+.form-group select option[value=""] {
+    color: var(--color-input-placeholder);
+}
+
+.dob-selects {
+    display: flex;
+    gap: 10px;
+}
+
+.dob-selects select {
+    flex: 1;
+}
+
+.empty-placeholder {
+    /* Used to maintain the 2-column grid for the last row */
+    visibility: hidden;
+    flex: 1;
+}
+
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent-orange);
+}
+
+.terms-checkbox label {
+    font-size: 0.95em;
+    color: var(--color-gray-text);
+}
+
+.terms-checkbox label a {
+    color: var(--color-primary-green); /* Link color for "terms and conditions" */
+    text-decoration: underline;
+}
+
+.terms-checkbox label a:hover {
+    color: var(--color-accent-orange);
+}
+
+.submit-btn {
+    background-color: var(--color-primary-green);
+    color: var(--color-white);
+    padding: 15px 40px;
+    font-size: 1.3em;
+    border-radius: 30px;
+    align-self: center;
+    margin-top: 20px;
+    min-width: 200px;
+}
+
+.submit-btn:hover {
+    background-color: #266a2a;
+}
+
+/* Hero Image Overlay (Large Logo) - Reused */
+.hero-image-overlay {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-image-overlay .large-logo {
+    width: 500px;
+    height: auto;
+}
+
+
+/* MODAL STYLES */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: var(--color-modal-overlay); /* Black w/ opacity */
+    padding-top: 60px; /* Location of the box */
+}
+
+.modal-content {
+    background-color: var(--color-modal-bg);
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 40px;
+    border: 1px solid var(--color-modal-border);
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 700px; /* Maximum width for readability */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    color: var(--color-dark-peach-text); /* Use the peach color for modal header */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: var(--color-modal-text);
+}
+
+.close-button {
+    color: var(--color-modal-border);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.confirm-button {
+    background-color: var(--color-primary-green);
+    color: var(--color-white);
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    display: block; /* Make it a block element */
+    margin: 30px auto 0 auto; /* Center it below the text */
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+    background-color: #266a2a;
+}
+
+/* Footer - Reused */
+.site-footer {
+    background-color: var(--color-dark-gray-footer);
+    color: #eee;
+    padding: 40px 0;
+    font-size: 0.9em;
+}
+
+.site-footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-left .footer-logo {
+    width: 40px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-left .copyright {
+    color: #ccc;
+    font-size: 0.85em;
+}
+
+.footer-center {
+    flex: 2;
+    min-width: 250px;
+    text-align: center;
+}
+
+.footer-center ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+}
+
+.footer-center ul li a {
+    color: #eee;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.footer-center ul li a:hover {
+    color: var(--color-accent-orange);
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5em;
+}
+
+.social-icons a {
+    color: var(--color-white);
+}
+
+.social-icons a:hover {
+    color: var(--color-accent-orange);
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.footer-buttons button {
+    background-color: var(--color-accent-orange);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+}
+
+.footer-buttons button:hover {
+    background-color: #e68900;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .intro-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .signup-card {
+        padding: 40px 25px;
+        max-width: 700px; /* Adjusted max-width for 2 columns */
+    }
+
+    .signup-card h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .dob-selects {
+        flex-direction: row; /* Keep selects in a row */
+        gap: 5px;
+    }
+
+    .empty-placeholder {
+        display: none; /* Hide empty placeholders on smaller screens */
+    }
+
+    .hero-image-overlay {
+        position: static;
+        transform: none;
+        margin-top: 40px;
+        opacity: 0.15;
+    }
+
+    .hero-image-overlay .large-logo {
+        width: 300px;
+    }
+
+    .site-footer .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .footer-center ul,
+    .social-icons,
+    .footer-buttons {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-buttons button {
+        max-width: 250px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none;
+    }
+
+    .navbar > .container {
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .account-btn {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .intro-text h1 {
+        font-size: 2.2em;
+    }
+
+    .signup-card {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .signup-card h2 {
+        font-size: 2em;
+    }
+
+    .submit-btn {
+        font-size: 1.1em;
+        padding: 12px 30px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-signup-section {
+        padding: 50px 0;
+    }
+
+    .intro-text h1 {
+        font-size: 1.8em;
+    }
+
+    .intro-text p {
+        font-size: 1em;
+    }
+
+    .signup-card h2 {
+        font-size: 1.8em;
+    }
+
+    .form-group label {
+        font-size: 0.8em;
+    }
+
+    .form-group input, .form-group select {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+
+    .terms-checkbox label {
+        font-size: 0.85em;
+    }
+
+    .submit-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .modal-content p {
+        font-size: 0.85em;
+    }
+
+    .confirm-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,573 @@
+/* Custom Properties (for easier color management) */
+:root {
+    /* Colors derived from the image */
+    --color-primary-green: #2e7d32; /* Dark green for logo/accents */
+    --color-accent-orange: #ff9800; /* Main accent orange (buttons, borders) */
+    --color-light-peach-bg: #ffe0b2; /* Lighter peach for the form card background */
+    --color-dark-peach-text: #a14e0f; /* Darker orange for form labels and descriptions */
+    --color-hero-bg: #fce4ec; /* Background of hero section (soft pink) */
+    --color-gray-text: #666; /* General body text color */
+    --color-dark-gray-footer: #4a4a4a; /* Footer background */
+    --color-white: #ffffff;
+    --color-black: #333; /* Headings, main text */
+    --color-light-bg: #f7f7f7; /* General page background */
+    --color-input-border: #a14e0f; /* Border color for inputs */
+    --color-input-placeholder: #b0b0b0; /* Placeholder text color */
+    --color-upload-btn: #87CEEB; /* A light blue for the upload button (example) */
+    --color-subtext: #888; /* Color for smaller instructional text */
+
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Basic Resets & Global Styles (consistent with previous pages) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-black);
+    background-color: var(--color-light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: background-color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+/* Header (navbar) - Reused */
+.navbar {
+    background-color: var(--color-white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--color-primary-green);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary-green);
+    text-decoration: none;
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav ul li a {
+    color: var(--color-gray-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95em;
+}
+
+.navbar nav ul li a:hover {
+    color: var(--color-primary-green);
+}
+
+.account-btn {
+    background-color: var(--color-accent-orange);
+    color: var(--color-white);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.95em;
+}
+
+.account-btn:hover {
+    background-color: #e68900;
+}
+
+/* Soup Kitchen Sign-up Section */
+.soup-kitchen-signup-section {
+    background-color: var(--color-hero-bg);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.soup-kitchen-signup-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-text {
+    text-align: left;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.intro-text h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.intro-text p {
+    font-size: 1.1em;
+    color: var(--color-gray-text);
+    line-height: 1.7;
+}
+
+.signup-card {
+    background-color: var(--color-light-peach-bg);
+    padding: 50px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 1000px; /* Consistent max-width for multi-column forms */
+    position: relative;
+    z-index: 3;
+}
+
+.signup-card h2 {
+    color: var(--color-primary-green);
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: right; /* Aligned to the right as per image */
+    padding-right: 20px;
+}
+
+.signup-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between form rows */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between form groups in a row */
+}
+
+.form-group {
+    flex: 1; /* Each group takes equal space */
+    min-width: 250px; /* Minimum width for responsiveness */
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px; /* Slightly less margin for subtext */
+    color: var(--color-dark-peach-text);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.form-group .subtext {
+    display: block;
+    font-size: 0.75em;
+    color: var(--color-subtext);
+    margin-bottom: 8px; /* Space between subtext and input */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-input-border);
+    border-radius: 5px;
+    background-color: var(--color-white);
+    font-size: 1em;
+    color: var(--color-black);
+    font-family: var(--font-body);
+}
+
+.form-group textarea {
+    min-height: 100px; /* Adjust height as needed for description */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-input-placeholder);
+}
+
+/* Specific styling for the Upload ID group */
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align label and button to the left */
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: var(--color-accent-orange); /* Orange button for upload */
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: 5px; /* Space between subtext and button */
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #e68900;
+}
+
+
+.empty-placeholder {
+    visibility: hidden; /* Takes up space but is not visible */
+    flex: 1;
+}
+
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent-orange);
+}
+
+.terms-checkbox label {
+    font-size: 0.95em;
+    color: var(--color-gray-text);
+}
+
+.submit-btn {
+    background-color: var(--color-primary-green);
+    color: var(--color-white);
+    padding: 15px 40px;
+    font-size: 1.3em;
+    border-radius: 30px;
+    align-self: center;
+    margin-top: 20px;
+    min-width: 200px;
+}
+
+.submit-btn:hover {
+    background-color: #266a2a;
+}
+
+/* Hero Image Overlay (Large Logo) - Reused */
+.hero-image-overlay {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-image-overlay .large-logo {
+    width: 500px;
+    height: auto;
+}
+
+/* Footer - Reused */
+.site-footer {
+    background-color: var(--color-dark-gray-footer);
+    color: #eee;
+    padding: 40px 0;
+    font-size: 0.9em;
+}
+
+.site-footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-left .footer-logo {
+    width: 40px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-left .copyright {
+    color: #ccc;
+    font-size: 0.85em;
+}
+
+.footer-center {
+    flex: 2;
+    min-width: 250px;
+    text-align: center;
+}
+
+.footer-center ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+}
+
+.footer-center ul li a {
+    color: #eee;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.footer-center ul li a:hover {
+    color: var(--color-accent-orange);
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5em;
+}
+
+.social-icons a {
+    color: var(--color-white);
+}
+
+.social-icons a:hover {
+    color: var(--color-accent-orange);
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.footer-buttons button {
+    background-color: var(--color-accent-orange);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+}
+
+.footer-buttons button:hover {
+    background-color: #e68900;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .intro-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .signup-card {
+        padding: 40px 25px;
+        max-width: 700px;
+    }
+
+    .signup-card h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .empty-placeholder {
+        display: none; /* Hide empty placeholders on smaller screens */
+    }
+
+    .hero-image-overlay {
+        position: static;
+        transform: none;
+        margin-top: 40px;
+        opacity: 0.15;
+    }
+
+    .hero-image-overlay .large-logo {
+        width: 300px;
+    }
+
+    .site-footer .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .footer-center ul,
+    .social-icons,
+    .footer-buttons {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-buttons button {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none;
+    }
+
+    .navbar > .container {
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .account-btn {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .intro-text h1 {
+        font-size: 2.2em;
+    }
+
+    .signup-card {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .signup-card h2 {
+        font-size: 2em;
+    }
+
+    .submit-btn {
+        font-size: 1.1em;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .soup-kitchen-signup-section {
+        padding: 50px 0;
+    }
+
+    .intro-text h1 {
+        font-size: 1.8em;
+    }
+
+    .intro-text p {
+        font-size: 1em;
+    }
+
+    .signup-card h2 {
+        font-size: 1.8em;
+    }
+
+    .form-group label, .form-group .subtext {
+        font-size: 0.8em;
+    }
+
+    .form-group input, .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+
+    .upload-btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+
+    .terms-checkbox label {
+        font-size: 0.85em;
+    }
+
+    .submit-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
