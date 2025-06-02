@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> sample
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodBridge - User Profile</title>
