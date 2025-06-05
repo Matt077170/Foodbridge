@@ -1,545 +1,133 @@
-/* Custom Properties (for easier color management) */
-:root {
-    /* Colors derived from the image */
-    --color-primary-green: #2e7d32; /* Dark green for logo/accents */
-    --color-accent-orange: #ff9800; /* Main accent orange (buttons, borders) */
-    --color-light-peach-bg: #ffe0b2; /* Lighter peach for the form card background */
-    --color-dark-peach-text: #a14e0f; /* Darker orange for form labels and titles */
-    --color-hero-bg: #fce4ec; /* Background of hero section (soft pink) */
-    --color-gray-text: #666; /* General body text color */
-    --color-dark-gray-footer: #4a4a4a; /* Footer background */
-    --color-white: #ffffff;
-    --color-black: #333; /* Headings, main text */
-    --color-light-bg: #f7f7f7; /* General page background */
-    --color-input-border: #a14e0f; /* Border color for inputs */
-    --color-input-placeholder: #b0b0b0; /* Placeholder text color */
 
-    /* Fonts */
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
-}
-
-/* Basic Resets & Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--color-black);
-    background-color: var(--color-light-bg);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
-
-ul {
-    list-style: none;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    font-family: var(--font-heading);
-    transition: background-color 0.3s ease;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--color-black);
-}
-
-/* Header (navbar) - Reused from previous examples */
-.navbar {
-    background-color: var(--color-white);
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.navbar > .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.5em;
-    color: var(--color-primary-green);
-}
-
-.logo img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.logo a {
-    display: flex;
-    align-items: center;
-    color: var(--color-primary-green);
-    text-decoration: none;
-}
-
-.navbar nav ul {
-    display: flex;
-    gap: 30px;
-}
-
-.navbar nav ul li a {
-    color: var(--color-gray-text);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.95em;
-}
-
-.navbar nav ul li a:hover {
-    color: var(--color-primary-green);
-}
-
-.account-btn {
-    background-color: var(--color-accent-orange);
-    color: var(--color-white);
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.95em;
-}
-
-.account-btn:hover {
-    background-color: #e68900; /* Darker shade of orange */
-}
-
-/* Donor Sign-up Section */
-.donor-signup-section {
-    background-color: var(--color-hero-bg); /* Soft pink background */
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-    min-height: 85vh; /* Ensure it takes up enough vertical space */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.donor-signup-section .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2; /* Ensure content is above the overlay */
-}
-
-.intro-text {
-    text-align: left;
-    max-width: 800px;
-    width: 100%; /* Make it take full width of container */
-    margin-bottom: 40px;
-}
-
-.intro-text h1 {
-    font-size: 2.8em; /* Slightly smaller than hero h1, as per image */
-    margin-bottom: 15px;
-    line-height: 1.2;
-    color: var(--color-black);
-    font-weight: 700;
-}
-
-.intro-text p {
-    font-size: 1.1em;
-    color: var(--color-gray-text);
-    line-height: 1.7;
-}
-
-.signup-card {
-    background-color: var(--color-light-peach-bg); /* Lighter peach for the form background */
-    padding: 50px 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 1000px; /* Adjust max-width to fit 3 columns */
-    position: relative;
-    z-index: 3; /* Ensure it's above the background image */
-}
-
-.signup-card h2 {
-    color: var(--color-primary-green); /* Green for "Sign up for Donor" title */
-    font-size: 2.5em; /* Larger title as in image */
-    font-weight: 700;
-    margin-bottom: 40px; /* Space below title */
-    text-align: right; /* Align to the right as per image */
-    padding-right: 20px; /* Small padding from right edge */
-}
-
-.signup-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px; /* Space between rows */
-}
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px; /* Space between form groups in a row */
-}
-
-.form-group {
-    flex: 1; /* Each group takes equal space */
-    min-width: 250px; /* Minimum width for responsiveness */
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--color-dark-peach-text); /* Darker orange for labels */
-    font-size: 0.9em; /* Smaller label text */
-    text-transform: uppercase; /* Uppercase as in image */
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--color-input-border); /* Border color for inputs */
-    border-radius: 5px;
-    background-color: var(--color-white); /* White background for inputs */
-    font-size: 1em;
-    color: var(--color-black);
-    font-family: var(--font-body);
-}
-
-.form-group input::placeholder,
-.form-group select option[value=""] {
-    color: var(--color-input-placeholder); /* Placeholder color */
-}
-
-.dob-selects {
-    display: flex;
-    gap: 10px; /* Space between month, day, year selects */
-}
-
-.dob-selects select {
-    flex: 1; /* Each select takes equal space */
-}
-
-.empty-placeholder {
-    /* Used to maintain the 3-column grid for the last row */
-    visibility: hidden;
-    flex: 1;
-}
-
-.terms-checkbox {
-    display: flex;
-    align-items: center;
-    margin-top: 10px; /* Space above checkbox */
-    margin-bottom: 30px; /* Space below checkbox before button */
-    justify-content: center; /* Center the checkbox and text */
-}
-
-.terms-checkbox input[type="checkbox"] {
-    margin-right: 10px;
-    width: 18px; /* Custom checkbox size */
-    height: 18px;
-    accent-color: var(--color-accent-orange); /* Color of the checkbox when checked */
-}
-
-.terms-checkbox label {
-    font-size: 0.95em;
-    color: var(--color-gray-text);
-}
-
-.submit-btn {
-    background-color: var(--color-primary-green); /* Green submit button */
-    color: var(--color-white);
-    padding: 15px 40px;
-    font-size: 1.3em; /* Larger button text */
-    border-radius: 30px; /* Very rounded button */
-    align-self: center; /* Center the button within the form */
-    margin-top: 20px; /* Space above button */
-    min-width: 200px; /* Ensure button has decent width */
-}
-
-.submit-btn:hover {
-    background-color: #266a2a; /* Darker green on hover */
-}
-
-
-/* Hero Image Overlay (Large Logo) - Reused from previous examples */
-.hero-image-overlay {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    opacity: 0.1;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.hero-image-overlay .large-logo {
-    width: 500px;
-    height: auto;
-}
-
-/* Footer - Reused from previous examples */
-.site-footer {
-    background-color: var(--color-dark-gray-footer);
-    color: #eee;
-    padding: 40px 0;
-    font-size: 0.9em;
-}
-
-.site-footer .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.footer-left {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-left .footer-logo {
-    width: 40px;
-    height: auto;
-    margin-bottom: 10px;
-    filter: brightness(0) invert(1);
-}
-
-.footer-left .copyright {
-    color: #ccc;
-    font-size: 0.85em;
-}
-
-.footer-center {
-    flex: 2;
-    min-width: 250px;
-    text-align: center;
-}
-
-.footer-center ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px 30px;
-}
-
-.footer-center ul li a {
-    color: #eee;
-    font-weight: 400;
-    font-size: 1em;
-}
-
-.footer-center ul li a:hover {
-    color: var(--color-accent-orange);
-}
-
-.footer-right {
-    flex: 1;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 20px;
-    font-size: 1.5em;
-}
-
-.social-icons a {
-    color: var(--color-white);
-}
-
-.social-icons a:hover {
-    color: var(--color-accent-orange);
-}
-
-.footer-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: flex-end;
-}
-
-.footer-buttons button {
-    background-color: var(--color-accent-orange);
-    color: var(--color-white);
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    min-width: 180px;
-    max-width: 220px;
-    width: 100%;
-}
-
-.footer-buttons button:hover {
-    background-color: #e68900;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .intro-text {
-        text-align: center;
-        margin-bottom: 30px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
     }
 
-    .signup-card {
-        padding: 40px 25px;
-        max-width: 700px; /* Adjust max-width for smaller screens */
+    body {
+      background-color: #fff;
+      color: #333;
     }
 
-    .signup-card h2 {
-        text-align: center;
-        margin-bottom: 30px;
+    header {
+      background-color: white;
+      border-bottom: 1px solid #ddd;
     }
 
-    .form-row {
-        flex-direction: column;
-        gap: 20px;
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #4d6442;
+      font-weight: bold;
+    }
+
+    .intro {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      padding: 0 1rem;
+    }
+
+    .intro h2 {
+      font-size: 2rem;
+    }
+
+    .intro .highlight {
+      color: #f89b7f;
+    }
+
+    .form-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: linear-gradient(to bottom, #fbd0b3, #f6a77d);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .form-container h2 {
+      position: absolute;
+      top: -1.5rem;
+      right: 2rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #294419;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem 2rem;
     }
 
     .form-group {
-        min-width: unset; /* Remove min-width */
-        width: 100%;
-    }
-
-    .dob-selects {
-        flex-direction: row; /* Keep selects in a row */
-        gap: 5px;
-    }
-
-    .empty-placeholder {
-        display: none; /* Hide empty placeholders on smaller screens */
-    }
-
-    .hero-image-overlay {
-        position: static;
-        transform: none;
-        margin-top: 40px;
-        opacity: 0.15;
-    }
-
-    .hero-image-overlay .large-logo {
-        width: 300px;
-    }
-
-    .site-footer .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        min-width: unset;
-        width: 100%;
-        margin-bottom: 20px;
-        align-items: center;
-    }
-
-    .footer-center ul,
-    .social-icons,
-    .footer-buttons {
-        justify-content: center;
-        align-items: center;
-    }
-
-    .footer-buttons button {
-        max-width: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar nav {
-        display: none;
-    }
-
-    .navbar > .container {
-        justify-content: space-around;
-        gap: 15px;
-    }
-
-    .account-btn {
-        padding: 6px 12px;
-        font-size: 0.85em;
-    }
-
-    .intro-text h1 {
-        font-size: 2.2em;
-    }
-
-    .signup-card {
-        width: 95%;
-        padding: 30px 20px;
-    }
-
-    .signup-card h2 {
-        font-size: 2em;
-    }
-
-    .submit-btn {
-        font-size: 1.1em;
-        padding: 12px 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .donor-signup-section {
-        padding: 50px 0;
-    }
-
-    .intro-text h1 {
-        font-size: 1.8em;
-    }
-
-    .intro-text p {
-        font-size: 1em;
-    }
-
-    .signup-card h2 {
-        font-size: 1.8em;
+      display: flex;
+      flex-direction: column;
     }
 
     .form-group label {
-        font-size: 0.8em;
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      font-weight: bold;
     }
 
-    .form-group input, .form-group select {
-        padding: 10px 12px;
-        font-size: 0.9em;
+    .form-group input,
+    .form-group select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
     }
 
-    .terms-checkbox label {
-        font-size: 0.85em;
+    .dob-group {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .terms {
+      grid-column: span 3;
+      font-size: 0.8rem;
+      color: #2d7a62;
+    }
+
+    .terms input {
+      margin-right: 0.5rem;
     }
 
     .submit-btn {
-        font-size: 1em;
-        padding: 10px 20px;
+      grid-column: span 3;
+      text-align: center;
+      margin-top: 1rem;
     }
-}
+
+    .submit-btn button {
+      padding: 0.7rem 2rem;
+      background-color: #7b967a;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }

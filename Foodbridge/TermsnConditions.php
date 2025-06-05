@@ -12,7 +12,7 @@
     <header class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
+                <a href="SignUp.php">
                     <img src="logo.png" alt="FoodBridge Logo">
                     <span>FoodBridge</span>
                 </a>

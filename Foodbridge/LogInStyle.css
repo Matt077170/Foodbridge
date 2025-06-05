@@ -1,462 +1,458 @@
-/* Custom Properties (for easier color management) */
-:root {
-    /* Colors derived from the image */
-    --color-primary-green: #2e7d32; /* Dark green for logo/accents */
-    --color-accent-orange: #ff9800; /* Main accent orange (buttons, borders) */
-    --color-light-orange-bg: #ffccbc; /* Light peach for login card background */
-    --color-dark-orange-text: #a14e0f; /* Darker orange for login form text/buttons */
-    --color-hero-bg: #fce4ec; /* Background of hero section (soft pink) */
-    --color-gray-text: #666; /* General body text color */
-    --color-dark-gray-footer: #4a4a4a; /* Footer background */
-    --color-white: #ffffff;
-    --color-black: #333; /* Headings, main text */
-    --color-light-bg: #f7f7f7; /* General page background */
-
-    /* Fonts */
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
-}
-
-/* Basic Resets & Global Styles */
-* {
+/* General Body and Container Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-body);
+    color: #333;
     line-height: 1.6;
-    color: var(--color-black);
-    background-color: var(--color-light-bg);
+    background-color: #f7f7f7; /* Light background for the overall page */
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1200px; /* Adjust as needed for your desired width */
     margin: 0 auto;
     padding: 0 20px;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
-
-ul {
-    list-style: none;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    font-family: var(--font-heading); /* Buttons often use heading font */
-    transition: background-color 0.3s ease;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--color-black);
-}
-
-/* Header (navbar) */
+/* Navbar */
 .navbar {
-    background-color: var(--color-white);
+    background-color: #fff; /* White background for the navbar */
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.navbar > .container { /* Targeting the container directly inside navbar */
+.navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
+.navbar .logo a {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.5em;
-    color: var(--color-primary-green);
 }
 
-.logo img {
-    height: 40px;
+.navbar .logo img {
+    height: 40px; /* Adjust logo size */
     margin-right: 10px;
 }
 
-.navbar nav ul { /* Targeting ul inside nav inside navbar */
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 30px; /* Space between nav items */
+}
+
+.navbar nav ul li {
+    margin-left: 30px;
 }
 
 .navbar nav ul li a {
-    color: var(--color-gray-text);
+    text-decoration: none;
+    color: #555;
     font-weight: 600;
-    text-transform: uppercase;
     font-size: 0.95em;
+    transition: color 0.3s ease;
 }
 
 .navbar nav ul li a:hover {
-    color: var(--color-primary-green);
+    color: #007bff; /* Example hover color, adjust to your brand */
 }
 
-.account-btn {
-    background-color: var(--color-accent-orange);
-    color: var(--color-white);
-    padding: 8px 20px;
-    border-radius: 20px; /* More rounded as in image */
-    font-size: 0.95em;
+.login-button {
+    background-color: #f0f0f0; /* Light gray for login button */
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.account-btn:hover {
-    background-color: darken(var(--color-accent-orange), 10%); /* Requires Sass/Less or calculate manually */
-    /* For pure CSS: background-color: #e68900; */
+.login-button:hover {
+    background-color: #e0e0e0; /* Darker gray on hover */
+    color: #000;
 }
 
-
-/* Hero Section */
+/* Main Content - Hero Section (with Login Card) */
 .hero-section {
-    background-color: var(--color-hero-bg); /* Light pinkish background */
-    padding: 80px 0; /* Adjust padding as needed */
     position: relative;
-    overflow: hidden; /* To contain the absolute positioned logo */
-    display: flex; /* Make hero-section itself a flex container */
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh; /* Ensure it's tall enough to contain everything */
+    padding: 100px 0; /* Adjust padding to give space */
+    background-color: #f7f7f7; /* Background color */
+    overflow: hidden; /* Hide overflowing parts of the hero image */
 }
 
-.hero-content {
+.hero-section .container.hero-content {
     display: flex;
+    align-items: flex-start; /* Align items to the start of the cross-axis */
     justify-content: space-between;
-    align-items: center;
-    position: relative; /* For z-index if needed */
-    z-index: 2; /* Ensure content is above the overlay */
-    width: 100%; /* Take full width of container */
+    gap: 40px; /* Space between text and login card */
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay image */
 }
 
 .hero-text {
-    flex: 1;
-    max-width: 55%; /* Adjust width for text area */
-    margin-right: 40px; /* Space between text and login card */
-    color: var(--color-black);
+    flex: 1; /* Allows text to take available space */
+    max-width: 550px; /* Max width for the text block */
+    color: #333;
+    padding-top: 50px; /* Pushes the text down a bit to align with the login card */
 }
 
 .hero-text h1 {
-    font-size: 3.2em;
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    font-size: 2.8em;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
 .hero-text p {
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.1em;
-    color: var(--color-gray-text);
     line-height: 1.7;
+    margin-bottom: 10px;
 }
 
-/* Login Card Styling */
+/* Login Card */
 .login-card {
-    background-color: var(--color-light-orange-bg);
-    padding: 40px;
+    background-color: #FFC0CB; /* Light pink background */
+    padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 380px; /* Fixed width for the login card */
     text-align: center;
-    width: 400px; /* Fixed width for the login card */
-    flex-shrink: 0; /* Prevent it from shrinking */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Subtle white border */
-    /* backdrop-filter: blur(3px); /* For frosted glass effect, modern browsers */
+    color: #333;
 }
 
 .login-card h2 {
-    color: var(--color-dark-orange-text);
-    margin-bottom: 30px;
-    font-size: 2.2em;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    color: #333;
 }
 
-.form-group { /* Renamed from input-group in previous example */
-    margin-bottom: 25px;
+.login-card .form-group {
+    margin-bottom: 20px;
     text-align: left;
 }
 
-.form-group label {
+.login-card label {
     display: block;
+    font-size: 0.9em;
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--color-dark-orange-text);
-    font-size: 0.95em;
+    color: #555;
+    text-transform: uppercase;
 }
 
-.form-group input {
+.login-card input[type="text"],
+.login-card input[type="password"] {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid var(--color-dark-orange-text);
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white input fields */
     font-size: 1em;
-    color: var(--color-black);
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.login-btn { /* The login button inside the form */
-    background-color: var(--color-dark-orange-text);
-    color: var(--color-white);
-    padding: 12px 30px;
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.login-btn {
+    background-color: #4CAF50; /* Green submit button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
     font-size: 1.1em;
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 25px; /* More rounded */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width button */
+    margin-top: 15px;
 }
 
 .login-btn:hover {
-    background-color: darken(var(--color-dark-orange-text), 10%);
-    /* For pure CSS: background-color: #8d450d; */
+    background-color: #45a049; /* Darker green on hover */
 }
 
 .forgot-password,
 .no-account {
     display: block;
     margin-top: 15px;
-    color: var(--color-dark-orange-text);
     font-size: 0.9em;
-    text-align: center; /* Center the links */
-}
-
-.no-account {
-    margin-top: 10px; /* Closer to forgot password */
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .forgot-password:hover,
 .no-account:hover {
-    text-decoration: underline;
+    color: #007bff;
 }
 
-/* Hero Image Overlay (Large Logo) */
+/* PHP message styling */
+.login-card p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+/* Hero Image Overlay */
 .hero-image-overlay {
     position: absolute;
-    top: 50%;
-    right: 0; /* Align to the right side of hero-section */
-    transform: translateY(-50%);
-    opacity: 0.1; /* Very subtle */
-    z-index: 1; /* Behind other content */
-    pointer-events: none; /* Ensure it doesn't block interactions */
+    top: 0;
+    right: 0; /* Position to the right side of the hero section */
+    width: 50%; /* Adjust width as needed */
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align the image to the right within its container */
+    z-index: 1; /* Ensure it's behind the text and login card */
 }
 
 .hero-image-overlay .large-logo {
-    width: 500px; /* Adjust size as needed to match image */
-    height: auto;
+    height: 120%; /* Make it larger to fill and overflow */
+    opacity: 0.1; /* Very subtle opacity */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    width: auto; /* Maintain aspect ratio */
+    filter: grayscale(100%); /* Make it monochrome */
+    transform: translateX(20%); /* Move it slightly off-screen to the right */
 }
 
 /* What We Do Section */
-.what-we-do-section { /* Matches your HTML class name */
+.what-we-do-section {
+    background-color: #fff;
     padding: 80px 0;
     text-align: center;
-    background-color: var(--color-light-bg);
 }
 
 .what-we-do-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    color: #333;
 }
 
-.what-we-do-section .subtitle { /* Matches your HTML class name */
+.what-we-do-section .subtitle {
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.1em;
-    color: var(--color-gray-text);
+    color: #666;
     max-width: 800px;
     margin: 0 auto 50px auto;
-    line-height: 1.7;
 }
 
 .features-grid {
-    display: flex;
-    justify-content: center; /* Center the grid items */
-    flex-wrap: wrap;
-    gap: 40px; /* Space between items */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .feature-item {
-    flex: 0 0 calc(25% - 30px); /* 4 items per row, accounting for gap */
-    max-width: 250px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    transition: transform 0.3s ease;
 }
 
-.feature-item:hover {
-    transform: translateY(-5px);
-}
-
-.icon-box { /* Styling for the circular icons with borders */
+.feature-item .icon-box {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 20px auto;
+    margin-bottom: 20px;
     font-size: 2.5em;
-    color: var(--color-black); /* Icons are dark as per image */
-    background-color: transparent; /* No fill */
+    color: #fff; /* Icon color */
 }
 
-/* Specific border colors for icons */
-.yellow-border {
-    border: 3px solid var(--color-accent-orange); /* Orange border */
+.feature-item .icon-box.yellow-border {
+    background-color: #FFC0CB; /* Pink background for icons */
+    border: 3px solid #F5D300; /* Yellow border */
 }
 
-.green-border {
-    border: 3px solid var(--color-primary-green); /* Green border */
+.feature-item .icon-box.green-border {
+    background-color: #FFC0CB; /* Pink background for icons */
+    border: 3px solid #4CAF50; /* Green border */
 }
+
+
+.feature-item .icon-box i {
+    color: #333; /* Icon color inside box */
+}
+
 
 .feature-item h3 {
-    font-size: 1.25em;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    font-size: 1.3em;
+    color: #333;
 }
 
-/* Footer (site-footer) */
-.site-footer { /* Matches your HTML class name */
-    background-color: var(--color-dark-gray-footer);
-    color: #eee;
-    padding: 40px 0;
+/* Footer */
+.site-footer {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 50px 0 30px;
     font-size: 0.9em;
 }
 
-.site-footer .footer-content { /* Targeting the container */
+.site-footer .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align items to the start for multi-line content */
-    flex-wrap: wrap;
-    gap: 30px; /* Space between footer sections */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.footer-left {
-    flex: 1; /* Allow to grow */
-    min-width: 200px; /* Minimum width before wrapping */
+.site-footer .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
-.footer-left .footer-logo { /* Targeting the image within footer-left */
-    width: 40px; /* Adjust size if needed */
-    height: auto;
+.site-footer .footer-logo {
+    height: 50px;
     margin-bottom: 10px;
-    filter: brightness(0) invert(1); /* Makes a colored logo white */
 }
 
-.footer-left .copyright {
-    color: #ccc;
-    font-size: 0.85em;
+.site-footer .copyright {
+    opacity: 0.8;
 }
 
-.footer-center {
-    flex: 2; /* Allows it to take more space */
-    min-width: 250px;
-    text-align: center; /* Center the links if space allows */
+.site-footer .footer-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.footer-center ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center links in footer */
-    gap: 15px 30px; /* Row and column gap */
+.site-footer .footer-center ul li {
+    margin-bottom: 8px;
 }
 
-.footer-center ul li a {
-    color: #eee;
-    font-weight: 400;
-    font-size: 1em;
+.site-footer .footer-center ul li a {
+    color: white;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
 }
 
-.footer-center ul li a:hover {
-    color: var(--color-accent-orange);
+.site-footer .footer-center ul li a:hover {
+    text-decoration: underline;
 }
 
-.footer-right {
-    flex: 1; /* Allow to grow */
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Align to the right */
-    gap: 20px;
+.site-footer .footer-right {
+    text-align: right;
+    margin-bottom: 20px;
 }
 
-.social-icons {
-    display: flex;
-    gap: 20px;
+.site-footer .social-icons {
+    margin-bottom: 20px;
+}
+
+.site-footer .social-icons a {
+    color: white;
     font-size: 1.5em;
+    margin-left: 15px;
+    transition: color 0.3s ease;
 }
 
-.social-icons a {
-    color: var(--color-white);
+.site-footer .social-icons a:hover {
+    color: #f0f0f0;
 }
 
-.social-icons a:hover {
-    color: var(--color-accent-orange);
-}
-
-.footer-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%; /* Take full width of parent */
-    align-items: flex-end; /* Align buttons to the right */
-}
-
-.footer-buttons button {
-    background-color: var(--color-accent-orange);
-    color: var(--color-white);
+.site-footer .footer-buttons button {
+    background-color: #F5D300; /* Yellow buttons */
+    color: #333;
     padding: 10px 20px;
-    border-radius: 20px;
+    border: none;
+    border-radius: 5px;
     font-weight: 600;
-    min-width: 180px; /* Ensure buttons have consistent width */
-    max-width: 220px; /* Prevent them from getting too wide */
-    width: 100%; /* Make them fill the available space */
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px; /* Space between buttons if they wrap */
+    transition: background-color 0.3s ease;
 }
 
-.footer-buttons button:hover {
-    background-color: darken(var(--color-accent-orange), 10%);
-    /* For pure CSS: background-color: #e68900; */
+.site-footer .footer-buttons button:hover {
+    background-color: #e0c000; /* Darker yellow on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .hero-content {
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+    .hero-section .container.hero-content {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
 
     .hero-text {
-        max-width: 90%;
-        margin-right: 0;
+        padding-top: 0;
         margin-bottom: 40px;
+        max-width: 100%;
     }
 
     .login-card {
-        width: 80%; /* Adjust width for smaller screens */
-        margin: 0 auto; /* Center it */
+        width: 80%; /* Make login card more fluid */
+        max-width: 400px; /* Limit max width */
     }
 
     .hero-image-overlay {
-        position: static; /* Remove absolute positioning */
-        transform: none;
-        margin-top: 40px; /* Add space below hero content */
-        opacity: 0.15; /* Slightly less transparent */
+        position: static; /* Remove absolute positioning on smaller screens */
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
     }
 
     .hero-image-overlay .large-logo {
-        width: 300px; /* Make it smaller */
+        height: 200px; /* Adjust size for mobile */
+        transform: none;
     }
 
-    .features-grid {
-        justify-content: space-around;
-        gap: 30px;
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .feature-item {
-        flex: 0 0 calc(50% - 30px); /* Two per row */
+    .navbar nav {
+        margin-top: 15px;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar nav ul li {
+        margin: 10px 0;
+    }
+
+    .navbar .login-button {
+        margin-top: 15px;
     }
 
     .site-footer .footer-content {
@@ -465,79 +461,51 @@ h1, h2, h3, h4 {
         text-align: center;
     }
 
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        min-width: unset; /* Remove min-width constraints */
-        width: 100%; /* Take full width */
-        margin-bottom: 20px; /* Add space between sections */
-        align-items: center;
+    .site-footer .footer-left,
+    .site-footer .footer-center,
+    .site-footer .footer-right {
+        margin-bottom: 30px;
+        width: 100%; /* Full width for footer sections */
     }
 
-    .footer-center ul,
-    .social-icons,
-    .footer-buttons {
+    .site-footer .social-icons {
         justify-content: center;
-        align-items: center;
+        display: flex; /* To center social icons */
+    }
+    .site-footer .social-icons a {
+        margin: 0 10px; /* Adjust spacing */
     }
 
-    .footer-buttons button {
-        max-width: 250px; /* Limit button width on smaller screens */
+    .site-footer .footer-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .site-footer .footer-buttons button {
+        margin: 10px 0;
     }
 }
 
 @media (max-width: 768px) {
-    .navbar nav { /* Hide navigation on small screens, consider a hamburger menu with JS */
-        display: none;
-    }
-
-    .navbar > .container {
-        justify-content: space-around; /* Space out logo and account button */
-        gap: 15px;
-    }
-
-    .account-btn {
-        padding: 6px 12px;
-        font-size: 0.85em;
-    }
-
     .hero-text h1 {
-        font-size: 2.2em;
+        font-size: 2em;
     }
-
-    .login-card {
-        width: 95%;
-        padding: 30px 20px;
+    .hero-text p {
+        font-size: 1em;
     }
-
+    .what-we-do-section h2 {
+        font-size: 2em;
+    }
     .features-grid {
-        gap: 20px;
-    }
-
-    .feature-item {
-        flex: 0 0 90%; /* One per row on very small screens */
+        grid-template-columns: 1fr; /* Stack features on very small screens */
     }
 }
 
 @media (max-width: 480px) {
-    .hero-section {
-        padding: 50px 0;
+    .login-card {
+        padding: 20px;
     }
-
-    .hero-text h1 {
-        font-size: 1.8em;
-    }
-
-    .hero-text p, .what-we-do-section .subtitle {
-        font-size: 1em;
-    }
-
     .login-card h2 {
-        font-size: 1.8em;
-    }
-
-    .login-btn {
-        font-size: 1em;
-        padding: 10px 20px;
+        font-size: 1.5em;
     }
 }
