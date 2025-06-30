@@ -17,12 +17,13 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
+                      <li><a href="Donor.php"><i class="fas fa-home"></i> Dashboard</a></li>
                     <li><a href="recent.php" class="active"><i class="fas fa-clock"></i> Recent</a></li>
                     <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
                     <li><a href="#"><i class="fas fa-comments"></i> Messages</a></li>
                     <li><a href="#"><i class="fas fa-binoculars"></i> Explore</a></li>
                     <li><a href="#"><i class="fas fa-lightbulb"></i> Know More</a></li>
-                    <li><a href="Logout.php" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Log-out</a></li>
+                    <li><a href="LogIn.php" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Log-out</a></li>
                 </ul>
             </nav>
         </aside>

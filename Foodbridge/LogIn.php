@@ -5,7 +5,6 @@ $dbname = "foodbridge";
 $username = "root";
 $password = "";
 
-// Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -14,8 +13,8 @@ if ($conn->connect_error) {
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['username']; // changed from $users to $user
-    $pass = $_POST['password']; // renamed to match password_verify
+    $user = $_POST['username']; 
+    $pass = $_POST['password']; 
 
     // Updated to include last_name
     $sql = "SELECT id, username, password, first_name, last_name, address FROM users WHERE username = ? OR email_address = ?";
